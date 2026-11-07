@@ -1,0 +1,7 @@
+xarray
+netCDF4
+numpy
+pandas
+matplotlib
+pyyaml
+torch

@@ -1,0 +1,35 @@
+region:
+  name: "Baltic"
+  model: "ERGOM"
+
+data:
+  file_path: "./input/Baltic_vertically_integrated_monthly_PPR_GG_2010-2014.nc"
+  var_pp: "PPR_wint"
+  var_gg: "GG_wint"
+  start_year: 1953
+  end_year: 2023
+  timesteps_per_year: 12        # 12 for monthly, 73 for 5-day
+
+preprocessing:
+  mask_months: [1, 2]           # e.g., [1, 2] for Jan/Feb. Leave empty [] if not needed.
+  mask_zero_pp: false           # Set to true for SWES exact 0.0 boundary conditions
+  min_obs: 10                   # Minimum valid points per window
+
+parameters:
+  window_years: 3               # Correlation window length in years
+  max_lag_steps: 1              # 1 for monthly, up to 5 for 5-day data
+  calc_annual: "mean"           # "mean" (Fisher arithmetic) or "median" (Fisher median)
+
+compute:
+  device: "cuda"
+  batch_size_short_ts: 3700     # Tuned for ~8GB VRAM (e.g., RTX 3080 series) on <600 timesteps
+  batch_size_long_ts: 1000      # Tuned for L2 cache optimization on >600 timesteps
+  eps_low: 1.0e-12
+
+output:
+  output_dir: "./output/Baltic/"
+  save_monthly_nc: false        # Full-resolution TTI/LAG
+  save_annual_nc: true          # Annual TTI/LAG maps
+  save_basin_csv: true          # Area-weighted spatial averages
+  plot_timeseries: true         # <-- Add this line
+

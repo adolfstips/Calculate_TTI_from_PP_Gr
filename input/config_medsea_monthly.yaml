@@ -1,0 +1,34 @@
+region:
+  name: "MedSea"
+  model: "MedERGOM" # Update to exact model name
+
+data:
+  file_path: "./input/MedSea_vertically_integrated_monthly_PPR_GG_2010-2014.nc"
+  var_pp: "PPR_wint"
+  var_gg: "GG_wint"
+  start_year: 1991
+  end_year: 2021
+  timesteps_per_year: 12
+
+preprocessing:
+  mask_months: []               
+  mask_zero_pp: false           
+  min_obs: 10                   
+
+parameters:
+  window_years: 3               
+  max_lag_steps: 1              
+  calc_annual: "mean"           
+
+compute:
+  device: "cuda"
+  batch_size_short_ts: 3700     
+  batch_size_long_ts: 1000      
+  eps_low: 1.0e-12
+
+output:
+  output_dir: "./output/MedSea"
+  save_monthly_nc: false        
+  save_annual_nc: true          
+  save_basin_csv: true          
+  plot_timeseries: true

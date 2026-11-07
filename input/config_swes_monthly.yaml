@@ -1,0 +1,35 @@
+region:
+  name: "SWES"
+  model: "ERSEM" # Update as needed
+
+data:
+  file_path: "./input/SWES_vertically_integrated_monthly_PPR_GG_2012-2021.nc" 
+  var_pp: "PPR_wint"
+  var_gg: "GG_wint"
+  start_year: 2012
+  end_year: 2021
+  timesteps_per_year: 12
+
+preprocessing:
+  mask_months: []               
+  mask_zero_pp: true            # Active: Converts exact 0.0 boundaries to NA to prevent artifacts
+  min_obs: 10                   
+
+parameters:
+  window_years: 3               
+  max_lag_steps: 1              # SWES evaluated lags up to t+1
+  calc_annual: "mean"           
+
+compute:
+  device: "cuda"
+  batch_size_short_ts: 3700     
+  batch_size_long_ts: 1000      
+  eps_low: 1.0e-6               # SWES used a slightly larger epsilon threshold (1e-6) in the old script; adjust to 1e-12 if you prefer uniformity
+
+output:
+  output_dir: "./output/SWES"
+  save_monthly_nc: false        
+  save_annual_nc: true          
+  save_basin_csv: true          
+  plot_timeseries: true
+
