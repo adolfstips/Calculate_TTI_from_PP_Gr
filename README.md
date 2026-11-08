@@ -5,6 +5,7 @@
 [![R Version](https://img.shields.io/badge/R-4.4.2-276DC3.svg)](https://www.r-project.org/)
 
 **Title:** Implementing the Trophic Transfer Index (TTI): methodological challenges and solutions for eutrophication assessment
+
 **Authors:** Ove Parn, Adolf Stips, Luca Polimene, Diego Macias-Moy, Nuno Ferreira-Cordeiro, Elisa Garcia-Gorriz, Svetla Miladinova  
 **Journal:** *Ecological Indicators* (2026)  
 **Contact:** `adolf.stips@ext.ec.europa.eu` | `adolf.stips@gmail.com`  
@@ -45,3 +46,14 @@ tti-framework/
 ├── requirements.txt         # Python dependencies
 ├── .gitignore
 └── README.md
+
+## 🚀 How to Run
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Run script:
+   ```bash
+   python run_master_tti.py
+   ```
+
