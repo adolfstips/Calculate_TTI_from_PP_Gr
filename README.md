@@ -1,10 +1,21 @@
 # Trophic Transfer Index (TTI) Calculator
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python Version](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
+[![R Version](https://img.shields.io/badge/R-4.4.2-276DC3.svg)](https://www.r-project.org/)
+
+**Title:** Implementing the Trophic Transfer Index (TTI): methodological challenges and solutions for eutrophication assessment
+**Authors:** Ove Parn, Adolf Stips, Luca Polimene, Diego Macias-Moy, Nuno Ferreira-Cordeiro, Elisa Garcia-Gorriz, Svetla Miladinova  
+**Journal:** *Ecological Indicators* (2026)  
+**Contact:** `adolf.stips@ext.ec.europa.eu` | `adolf.stips@gmail.com`  
+
 This repository contains a unified, GPU-accelerated pipeline for calculating the Trophic Transfer Index (TTI) across various regional seas (Baltic Sea, Black Sea, Mediterranean Sea, SWES). 
 
 The TTI is defined as the maximum correlation between Primary Production Rate (PPR) and Zooplankton Grazing (GR), evaluated across a sliding temporal window with varying time lags.
 
 To provide flexibility for different scientific workflows, this repository provides mathematically identical implementations in both **R** and **Python**.
+
+For users the **Python** version is recommended.
 
 ## ⚠️ CRITICAL NOTICE: Spatial Grid Orientation & `cdo diff`
 
